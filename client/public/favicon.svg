@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0533"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="wc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c026d3"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="pc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark rounded background -->
+  <rect width="100" height="100" rx="24" fill="url(#bg)"/>
+
+  <!-- ── W letterform (purple/magenta) ── -->
+  <!-- Left leg down -->
+  <line x1="8" y1="18" x2="18" y2="62" stroke="url(#wc)" stroke-width="9" stroke-linecap="round"/>
+  <!-- Left V up to center -->
+  <line x1="18" y1="62" x2="30" y2="38" stroke="url(#wc)" stroke-width="9" stroke-linecap="round"/>
+  <!-- Right V down from center -->
+  <line x1="30" y1="38" x2="42" y2="62" stroke="url(#wc)" stroke-width="9" stroke-linecap="round"/>
+  <!-- Right leg up -->
+  <line x1="42" y1="62" x2="52" y2="18" stroke="url(#wc)" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Play triangle inside the centre V of W -->
+  <polygon points="22,44 22,58 36,51" fill="#c026d3" opacity="0.95"/>
+
+  <!-- ── P letterform (cyan) ── -->
+  <!-- P stem -->
+  <line x1="61" y1="18" x2="61" y2="78" stroke="url(#pc)" stroke-width="9" stroke-linecap="round"/>
+  <!-- P bowl top bar -->
+  <line x1="61" y1="18" x2="83" y2="18" stroke="url(#pc)" stroke-width="9" stroke-linecap="round"/>
+  <!-- P bowl right arc -->
+  <path d="M83 18 Q96 18 96 33 Q96 48 83 48" fill="none" stroke="url(#pc)" stroke-width="9" stroke-linecap="round"/>
+  <!-- P bowl bottom bar -->
+  <line x1="61" y1="48" x2="83" y2="48" stroke="url(#pc)" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Chat bubble dots inside P bowl -->
+  <circle cx="70" cy="33" r="3" fill="white" opacity="0.9"/>
+  <circle cx="78" cy="33" r="3" fill="white" opacity="0.9"/>
+  <circle cx="86" cy="33" r="3" fill="white" opacity="0.9"/>
+</svg>

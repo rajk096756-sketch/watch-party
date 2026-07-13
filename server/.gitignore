@@ -1,0 +1,33 @@
+# Environment variables
+.env.local
+.env.production
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+build
+
+# Database
+*.db
+*.db-journal
+
+# Upload directories
+secure_uploads/*
+!secure_uploads/.gitkeep
+
+# Invoice files
+invoices/*
+!invoices/.gitkeep
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
