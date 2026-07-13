@@ -618,8 +618,16 @@ export default function Dashboard() {
               <CommentsSection videoId={selectedVideo.id} />
             </div>
           ) : (
-            <div className="aspect-video bg-slate-950 rounded-2xl flex items-center justify-center text-slate-500">
-              Loading library assets...
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm text-center">
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-16 h-16 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+                  <Play className="w-8 h-8 text-slate-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">No video selected</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Select a video from the library to start watching</p>
+                </div>
+              </div>
             </div>
           )}
         </div>
