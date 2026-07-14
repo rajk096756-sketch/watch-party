@@ -67,7 +67,8 @@ app.use(cors({
       'http://127.0.0.1:5173',
       'http://localhost:5174',
       'http://127.0.0.1:5174',
-      process.env.CLIENT_URL // Add your Vercel domain here
+      'https://watch-party-nu-one.vercel.app',
+      process.env.CLIENT_URL
     ].filter(Boolean);
     
     if (allowedOrigins.includes(origin)) {
