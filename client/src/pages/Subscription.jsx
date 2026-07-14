@@ -10,7 +10,7 @@ export default function Subscription({ onBack }) {
   const [checkoutModal, setCheckoutModal] = useState({ show: false, orderId: '', plan: '', amount: 0 });
   const [successMsg, setSuccessMsg] = useState(null);
 
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   const PLAN_TIERS = [
     {

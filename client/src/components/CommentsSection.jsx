@@ -17,7 +17,7 @@ export default function CommentsSection({ videoId }) {
   const [reportingCommentId, setReportingCommentId] = useState(null);
   const [reportReason, setReportReason] = useState('');
   
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   // Fetch comments
   const fetchComments = async () => {

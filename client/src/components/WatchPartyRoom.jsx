@@ -73,7 +73,7 @@ export default function WatchPartyRoom({ roomId, video, onLeave }) {
   // Initialize socket connection
   useEffect(() => {
     // Establish connection to socket.io
-    socketRef.current = io('http://localhost:5000', {
+    socketRef.current = io(import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000', {
       auth: { token }
     });
 

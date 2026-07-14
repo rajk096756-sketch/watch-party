@@ -123,7 +123,7 @@ function SettingsDrawer({ open, onClose, user, token, updateProfileOptions, uplo
     if (newPw.length < 8) { setPwErr('New password must be at least 8 characters.'); return; }
     if (newPw !== confirmPw) { setPwErr('Passwords do not match.'); return; }
     try {
-      const res = await fetch('http://localhost:5000/api/auth/change-password', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/change-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ currentPassword: currentPw, newPassword: newPw }),
@@ -183,7 +183,7 @@ function SettingsDrawer({ open, onClose, user, token, updateProfileOptions, uplo
             <div className="flex items-center gap-4 mb-4">
               {user?.avatarUrl ? (
                 <img
-                  src={`http://localhost:5000${user.avatarUrl}`}
+                  src={`${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}${user.avatarUrl}`}
                   alt="avatar"
                   className="w-16 h-16 rounded-2xl object-cover border-2 border-brand-500/30"
                 />
@@ -430,7 +430,7 @@ export default function Dashboard() {
   const [downloadError, setDownloadError] = useState(null);
   const [downloadSuccess, setDownloadSuccess] = useState(null);
 
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     async function fetchVideos() {
@@ -533,7 +533,7 @@ export default function Dashboard() {
             <div className="relative">
               {user?.avatarUrl ? (
                 <img
-                  src={`http://localhost:5000${user.avatarUrl}`}
+                  src={`${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}${user.avatarUrl}`}
                   alt="avatar"
                   className="w-8 h-8 rounded-full object-cover border border-brand-500/30"
                 />

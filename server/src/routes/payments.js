@@ -29,17 +29,20 @@ const PLAN_DETAILS = {
 };
 
 // Razorpay client instance setup (checks if keys are present, falls back to Mock mode)
-const isRazorpayConfigured = process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET;
+const isRazorpayConfigured = process.env.RAZORPAY_KEY_ID && 
+                             process.env.RAZORPAY_KEY_SECRET && 
+                             process.env.RAZORPAY_KEY_ID.trim() !== '' && 
+                             process.env.RAZORPAY_KEY_SECRET.trim() !== '';
 let razorpayInstance = null;
 
 if (isRazorpayConfigured) {
   razorpayInstance = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID,
-    key_secret: process.env.RAZORPAY_KEY_SECRET
+    key_id: process.env.RAZORPAY_KEY_ID.trim(),
+    key_secret: process.env.RAZORPAY_KEY_SECRET.trim()
   });
-  console.log('[PAYMENTS] Razorpay SDK initialized in Test Mode.');
+  console.log('[PAYMENTS] Razorpay SDK initialized with live credentials. Mock mode DISABLED.');
 } else {
-  console.log('[PAYMENTS] Razorpay credentials missing. Operating in Mock Billing Mode.');
+  console.log('[PAYMENTS] Razorpay credentials missing. Operating in Mock Billing Mode (development only).');
 }
 
 // Transporter for nodemailer
@@ -222,7 +225,14 @@ router.post('/verify', authenticateUser, authenticatedLimiter, validate(verifyPa
     let isValid = false;
 
     if (razorpay_order_id.startsWith('order_mock_')) {
-      // Mock verification - only allowed in development mode
+      // Mock verification - only allowed when Razorpay is NOT configured
+      if (isRazorpayConfigured) {
+        return res.status(400).json({
+          success: false,
+          message: 'Mock payments are not allowed when live Razorpay credentials are configured.'
+        });
+      }
+      // Also block in production mode even if credentials aren't configured
       if (process.env.NODE_ENV === 'production') {
         return res.status(400).json({
           success: false,
